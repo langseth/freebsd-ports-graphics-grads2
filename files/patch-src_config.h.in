@@ -1,0 +1,12 @@
+--- src/config.h.in.orig	2017-12-21 11:03:18.055813000 -0600
++++ src/config.h.in	2017-12-21 11:04:06.086772000 -0600
+@@ -1,5 +1,9 @@
+ /* src/config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++/* Fixes some dependencies globally */
++#include <unistd.h>
++#include <ctype.h>
++
+ /* Define if building universal (internal helper macro) */
+ #undef AC_APPLE_UNIVERSAL_BUILD
+ 

@@ -1,0 +1,5 @@
+TIMESTAMP = 1513815183
+SHA256 (grads-2.2.0-src.tar.gz) = 1cb8cdb29da218bca5d4e2931eb2bc0c2e8a290b29540132ac1f2ad088857689
+SIZE (grads-2.2.0-src.tar.gz) = 5971109
+SHA256 (example.tar.gz) = 1d744696d3f5722b755786da7bc1b87c2217734a2848643dce20660ebe7a5723
+SIZE (example.tar.gz) = 1647733
