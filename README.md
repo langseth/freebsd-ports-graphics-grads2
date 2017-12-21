@@ -17,7 +17,9 @@ ftp/curl science/netcdf graphics/libgeotiff devel/shapelib science/grib_api grap
 ```
 
 #### g2clib
+```
 fetch g2clib build and install. This should be converted to a port
+
 
 fetch http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/g2clib-1.6.0.tar
 tar xf g2clib-1.6.0.tar
@@ -27,6 +29,7 @@ gmake
 cp libg2c_v1.6.0.a /usr/local/lib/
 ln -s /usr/local/lib/libg2c_v1.6.0.a /usr/local/lib/libgrib2c.a
 cp grib2.h /usr/local/include
+```
 
 ### Build grads2
 This is a FreeBSD port so check this out to /usr/port/graphics/grads2 and run make && make install
