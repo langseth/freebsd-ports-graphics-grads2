@@ -1,0 +1,39 @@
+--- Makefile.in.orig	2012-09-14 07:02:21.000000000 -0500
++++ Makefile.in	2018-01-04 15:37:48.473200000 -0600
+@@ -124,7 +124,7 @@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -ljbig -lcurses -lthr
+ LN_S = @LN_S@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+@@ -190,12 +190,12 @@
+ extra_utils = @extra_utils@
+ gadap_inc = @gadap_inc@
+ geotiff_inc = @geotiff_inc@
+-geotiff_libs = @geotiff_libs@
++geotiff_libs = @geotiff_libs@ -lcurses
+ grads_xlibs = @grads_xlibs@
+ grib2_inc = @grib2_inc@
+ grib2_libs = @grib2_libs@
+ gui_inc = @gui_inc@
+-gui_libs = @gui_libs@
++gui_libs = @gui_libs@ -lcurses
+ hdf5_inc = @hdf5_inc@
+ hdf5_libs = @hdf5_libs@
+ hdf_inc = @hdf_inc@
+@@ -219,10 +219,10 @@
+ oldincludedir = @oldincludedir@
+ prefix = @prefix@
+ printim_inc = @printim_inc@
+-printim_libs = @printim_libs@
++printim_libs = @printim_libs@ -lcurses
+ program_transform_name = @program_transform_name@
+ readline_inc = @readline_inc@
+-readline_libs = @readline_libs@
++readline_libs = @readline_libs@ -lcurses
+ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ shp_inc = @shp_inc@

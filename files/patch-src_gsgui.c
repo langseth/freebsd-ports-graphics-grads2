@@ -1,5 +1,5 @@
 --- src/gsgui.c.orig	2008-08-08 06:47:56.000000000 -0500
-+++ src/gsgui.c	2017-12-20 22:12:01.302732000 -0600
++++ src/gsgui.c	2017-12-19 17:11:17.504405000 -0600
 @@ -42,9 +42,9 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -12,12 +12,3 @@
  #endif
  #include "gagui.h"
  
-@@ -457,7 +457,7 @@
-       UserColors[4].color = BLUE;
-       UserColors[5].color = YELLOW;
-       icolors = 5;
--      if(!name) return;
-+      if(!name) return 0;
-    }
- 
-    icolors++;

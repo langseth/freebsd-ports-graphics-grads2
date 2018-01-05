@@ -2,11 +2,11 @@
 # $FreeBSD: head/graphics/grads/Makefile 452602 2017-10-21 20:18:16Z sunpoet $
 
 PORTNAME=	grads
-PORTVERSION=	2.2.0
+PORTVERSION=	2.0.2
 PKGNAMESUFFIX=	2
 #PORTREVISION=	12
 CATEGORIES=	graphics science math
-MASTER_SITES=	ftp://cola.gmu.edu/grads/2.2/:src \
+MASTER_SITES=	ftp://cola.gmu.edu/grads/2.0/:src \
 		ftp://grads.iges.org/grads/:other \
 		ftp://cola.gmu.edu/grads/:other
 DISTFILES=	${PORTNAME}-${PORTVERSION}-src${EXTRACT_SUFX}:src \
@@ -20,21 +20,25 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libudunits2.a:science/udunits \
 		${LOCALBASE}/lib/libsx.a:x11/libsx
 LIB_DEPENDS=	libgd.so:graphics/gd \
 		libpng.so:graphics/png \
-		libX11.so:x11/libX11 \
-		libcairo.so:graphics/cairo
+		#libcairo.so:graphics/cairo \
+		#libjasper.so:graphics/jasper \
+		#libshp.so:devel/shapelib
 
-USES=		readline jpeg ncurses
+USES=		readline jpeg ncurses gmake
 USE_GCC=	any
 GNU_CONFIGURE=		yes
-LDFLAGS=			-L/usr/lib -lz -lsz -L/usr/local/lib  -lX11
-CONFIGURE_ENV+=		SUPPLIBS="${LOCALBASE}"
+LDFLAGS=                        -L/usr/lib -lz -lsz -L/usr/local/lib  -lX11
+CONFIGURE_ENV+=         SUPPLIBS="${LOCALBASE}"
 CONFIGURE_ARGS+=	--enable-dyn-supplibs \
-			--with-readline \
-			--with-geotiff \
-			--with-grib2 \
+			--with-readline# \
 			--with-gui \
 			--with-x \
-			--with-cairo
+			--disable-cairo \
+			--with-shp \
+			--without-gadap \
+			--with-grib2 \
+			--with-netcdf=${LOCALBASE} \
+			--without-hdf4
 
 OPTIONS_DEFINE=	HDF NETCDF DOCS EXAMPLES
 OPTIONS_DEFAULT=	NETCDF
@@ -72,6 +76,7 @@ post-extract:
 
 post-configure:
 	${REINPLACE_CMD} -e "s:%%DATADIR%%:${DATADIR}:" ${WRKSRC}/src/gx.h
+	${REINPLACE_CMD} -e "s:libudunits.a:libudunits2.a:" ${WRKSRC}/src/Makefile
 
 post-install:
 	${MKDIR} "${STAGEDIR}${DATADIR}"

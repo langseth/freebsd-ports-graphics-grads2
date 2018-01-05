@@ -1,176 +1,412 @@
---- configure.orig	2017-08-09 07:30:02.000000000 -0500
-+++ configure	2017-12-21 10:40:54.762511000 -0600
-@@ -17218,9 +17218,10 @@
+--- configure.orig	2012-11-08 12:02:00.000000000 -0600
++++ configure	2018-01-04 17:04:21.385342000 -0600
+@@ -7690,7 +7690,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_includes_default
+-#include <libsx.h>
++#include <X11/libsx/libsx.h>
+ _ACEOF
+ rm -f conftest.$ac_objext
+ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+@@ -7734,7 +7734,7 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <libsx.h>
++#include <X11/libsx/libsx.h>
+ _ACEOF
+ if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+   (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
+@@ -7828,7 +7828,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_includes_default
+-#include <freq.h>
++#include <X11/libsx/freq.h>
+ _ACEOF
+ rm -f conftest.$ac_objext
+ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+@@ -7872,7 +7872,7 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <freq.h>
++#include <X11/libsx/freq.h>
+ _ACEOF
+ if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+   (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
+@@ -8285,8 +8285,8 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <libsx.h>
+-#include <freq.h>
++#include <X11/libsx/libsx.h>
++#include <X11/libsx/freq.h>
+ int
+ main ()
+ {
+@@ -8331,7 +8331,7 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <libsx.h>
++#include <X11/libsx/libsx.h>
+ int
+ main ()
+ {
+@@ -11217,7 +11217,7 @@
+   ga_saved_libs=$LIBS
+   CPPFLAGS=""
  
-   ga_lib_prefix='$(supp_lib_dir)/lib'
-   ga_lib_suffix='.a'
--  for ga_lib_name in readline ncurses ; do
-+  for ga_lib_name in readline ; do
-       readline_libs="$readline_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
-   done
-+  readline_libs="$readline_libs /usr/lib/libncurses.a"
+-    for ga_inc_name in libpng12 ; do
++    for ga_inc_name in libpng16 ; do
+       CPPFLAGS="$CPPFLAGS -I${ga_supplib_dir}/include/${ga_inc_name}"
+     done
  
- 
-   ga_lib_prefix='-l'
-@@ -17454,7 +17455,7 @@
-   LIBS=$ga_saved_libs
- 
- 
--  # png15
-+  # png16
-   echo
-   echo png
-   echo ---
-@@ -17471,13 +17472,13 @@
+@@ -11225,13 +11225,13 @@
    LDFLAGS="-L${ga_supplib_dir}/lib "
    LIBS="$LIBS "
  
--  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lpng15" >&5
--$as_echo_n "checking for main in -lpng15... " >&6; }
--if ${ac_cv_lib_png15_main+:} false; then :
-+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lpng16" >&5
-+$as_echo_n "checking for main in -lpng16... " >&6; }
-+if ${ac_cv_lib_png16_main+:} false; then :
-   $as_echo_n "(cached) " >&6
+-    echo "$as_me:$LINENO: checking for main in -lpng12" >&5
+-echo $ECHO_N "checking for main in -lpng12... $ECHO_C" >&6
+-if test "${ac_cv_lib_png12_main+set}" = set; then
++    echo "$as_me:$LINENO: checking for main in -lpng16" >&5
++echo $ECHO_N "checking for main in -lpng16... $ECHO_C" >&6
++if test "${ac_cv_lib_png16_main+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
  else
    ac_check_lib_save_LIBS=$LIBS
--LIBS="-lpng15  $LIBS"
-+LIBS="-lpng16 -lz $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -17491,17 +17492,17 @@
- }
+-LIBS="-lpng12  $LIBS"
++LIBS="-lpng16  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
  _ACEOF
- if ac_fn_c_try_link "$LINENO"; then :
--  ac_cv_lib_png15_main=yes
+@@ -11270,20 +11270,20 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_png12_main=yes
 +  ac_cv_lib_png16_main=yes
  else
--  ac_cv_lib_png15_main=no
-+  ac_cv_lib_png16_main=no
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-ac_cv_lib_png12_main=no
++ac_cv_lib_png16_main=no
  fi
- rm -f core conftest.err conftest.$ac_objext \
-     conftest$ac_exeext conftest.$ac_ext
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
  LIBS=$ac_check_lib_save_LIBS
  fi
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_png15_main" >&5
--$as_echo "$ac_cv_lib_png15_main" >&6; }
--if test "x$ac_cv_lib_png15_main" = xyes; then :
-+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_png16_main" >&5
-+$as_echo "$ac_cv_lib_png16_main" >&6; }
-+if test "x$ac_cv_lib_png16_main" = xyes; then :
-   have_png=yes
- fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_png12_main" >&5
+-echo "${ECHO_T}$ac_cv_lib_png12_main" >&6
+-if test $ac_cv_lib_png12_main = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_png16_main" >&5
++echo "${ECHO_T}$ac_cv_lib_png16_main" >&6
++if test $ac_cv_lib_png16_main = yes; then
+    have_libpng=yes
  
-@@ -17889,13 +17890,14 @@
+ fi
+@@ -11609,17 +11609,19 @@
  
    ga_lib_prefix='$(supp_lib_dir)/lib'
    ga_lib_suffix='.a'
--  for ga_lib_name in grib2c jasper png15 z ; do
+-  for ga_lib_name in gd png12 z jpeg ; do
++  for ga_lib_name in gd png16 jpeg ; do
+       printim_libs="$printim_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
+   done
++  printim_libs="$printim_libs /usr/lib/libz.a"
+ 
+ 	  else
+ 
+   ga_lib_prefix='$(supp_lib_dir)/lib'
+   ga_lib_suffix='.a'
+-  for ga_lib_name in gd png12 z ; do
++  for ga_lib_name in gd png16 ; do
+       printim_libs="$printim_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
+   done
++  printim_libs="$printim_libs /usr/lib/libz.a"
+ 
+           fi
+ 
+@@ -12848,7 +12850,7 @@
+   ga_saved_libs=$LIBS
+   CPPFLAGS=""
+ 
+-    for ga_inc_name in libpng12 ; do
++    for ga_inc_name in libpng16 ; do
+       CPPFLAGS="$CPPFLAGS -I${ga_supplib_dir}/include/${ga_inc_name}"
+     done
+ 
+@@ -12856,13 +12858,13 @@
+   LDFLAGS="-L${ga_supplib_dir}/lib "
+   LIBS="$LIBS "
+ 
+-      echo "$as_me:$LINENO: checking for main in -lpng12" >&5
+-echo $ECHO_N "checking for main in -lpng12... $ECHO_C" >&6
+-if test "${ac_cv_lib_png12_main+set}" = set; then
++      echo "$as_me:$LINENO: checking for main in -lpng16" >&5
++echo $ECHO_N "checking for main in -lpng16... $ECHO_C" >&6
++if test "${ac_cv_lib_png16_main+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lpng12  $LIBS"
++LIBS="-lpng16  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -12901,20 +12903,20 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_png12_main=yes
++  ac_cv_lib_png16_main=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-ac_cv_lib_png12_main=no
++ac_cv_lib_png16_main=no
+ fi
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_png12_main" >&5
+-echo "${ECHO_T}$ac_cv_lib_png12_main" >&6
+-if test $ac_cv_lib_png12_main = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_png16_main" >&5
++echo "${ECHO_T}$ac_cv_lib_png16_main" >&6
++if test $ac_cv_lib_png16_main = yes; then
+    have_libpng=yes
+ 
+ fi
+@@ -13236,9 +13238,10 @@
+ 
+   ga_lib_prefix='$(supp_lib_dir)/lib'
+   ga_lib_suffix='.a'
+-  for ga_lib_name in grib2c jasper png12 z ; do
 +  for ga_lib_name in grib2c jasper png16 ; do
        grib2_libs="$grib2_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
    done
 +  grib2_libs="$grib2_libs /usr/lib/libz.a"
  
  
-   ga_lib_prefix='-l'
--  for ga_lib_name in grib2c jasper png15 z ; do
-+  for ga_lib_name in grib2c jasper png16 z ; do
-       grib2_dynlibs="$grib2_dynlibs ${ga_lib_prefix}${ga_lib_name}"
-   done
+ fi
+@@ -13459,13 +13462,13 @@
+ echo "$as_me:$LINENO: result: $ac_cv_lib_grib2c_main" >&5
+ echo "${ECHO_T}$ac_cv_lib_grib2c_main" >&6
+ if test $ac_cv_lib_grib2c_main = yes; then
+-   echo "$as_me:$LINENO: checking for main in -lpng12" >&5
+-echo $ECHO_N "checking for main in -lpng12... $ECHO_C" >&6
+-if test "${ac_cv_lib_png12_main+set}" = set; then
++   echo "$as_me:$LINENO: checking for main in -lpng16" >&5
++echo $ECHO_N "checking for main in -lpng16... $ECHO_C" >&6
++if test "${ac_cv_lib_png16_main+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lpng12  $LIBS"
++LIBS="-lpng16  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -13504,20 +13507,20 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_png12_main=yes
++  ac_cv_lib_png16_main=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
  
-@@ -18174,9 +18176,10 @@
- 
-   ga_lib_prefix='$(supp_lib_dir)/lib'
-   ga_lib_suffix='.a'
--  for ga_lib_name in cairo Xrender fontconfig freetype pixman-1 png15 xml2 z ; do
-+  for ga_lib_name in cairo Xrender fontconfig freetype pixman-1 png16 xml2 ; do
-       cairo_libs="$cairo_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
-   done
-+  cairo_libs="$cairo_libs /usr/lib/libz.a"
- 
- 
-   ga_lib_prefix='-l'
-@@ -18238,13 +18241,13 @@
- 
-   ac_fn_c_check_header_mongrel "$LINENO" "udunits.h" "ac_cv_header_udunits_h" "$ac_includes_default"
- if test "x$ac_cv_header_udunits_h" = xyes; then :
--   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits" >&5
--$as_echo_n "checking for utInit in -ludunits... " >&6; }
-+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits2" >&5
-+$as_echo_n "checking for utInit in -ludunits2... " >&6; }
- if ${ac_cv_lib_udunits_utInit+:} false; then :
-   $as_echo_n "(cached) " >&6
+-ac_cv_lib_png12_main=no
++ac_cv_lib_png16_main=no
+ fi
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_png12_main" >&5
+-echo "${ECHO_T}$ac_cv_lib_png12_main" >&6
+-if test $ac_cv_lib_png12_main = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_png16_main" >&5
++echo "${ECHO_T}$ac_cv_lib_png16_main" >&6
++if test $ac_cv_lib_png16_main = yes; then
+    echo "$as_me:$LINENO: checking for main in -lz" >&5
+ echo $ECHO_N "checking for main in -lz... $ECHO_C" >&6
+ if test "${ac_cv_lib_z_main+set}" = set; then
+@@ -14117,13 +14120,13 @@
+   cat >>confdefs.h <<_ACEOF
+ #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+-  echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++  echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
  else
    ac_check_lib_save_LIBS=$LIBS
 -LIBS="-ludunits  $LIBS"
 +LIBS="-ludunits2  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -18438,9 +18441,10 @@
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -14626,10 +14629,10 @@
  
    ga_lib_prefix='$(supp_lib_dir)/lib'
    ga_lib_suffix='.a'
--  for ga_lib_name in hdf5 z ; do
-+  for ga_lib_name in hdf5 ; do
+-  for ga_lib_name in mfhdf df udunits sz jpeg z ; do
++  for ga_lib_name in mfhdf df udunits sz jpeg ; do
+       hdf_libs="$hdf_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
+   done
+-
++  hdf_libs="$hdf_libs /usr/lib/libz.a"
+ 
+ fi
+ 
+@@ -14795,13 +14798,13 @@
+ 
+ fi
+ if test $ac_cv_header_udunits_h = yes; then
+-    echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++    echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ludunits  $LIBS"
++LIBS="-ludunits2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -14861,7 +14864,7 @@
+ echo "${ECHO_T}$ac_cv_lib_udunits_utInit" >&6
+ if test $ac_cv_lib_udunits_utInit = yes; then
+     ga_use_udunits='yes'
+-        UDUNITS_LIBS='-ludunits'
++        UDUNITS_LIBS='-ludunits2'
+ 
+ fi
+ 
+@@ -17175,9 +17178,10 @@
+ 
+   ga_lib_prefix='$(supp_lib_dir)/lib'
+   ga_lib_suffix='.a'
+-  for ga_lib_name in hdf5 sz z ; do
++  for ga_lib_name in hdf5 sz ; do
        hdf5_libs="$hdf5_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
    done
 +  hdf5_libs="$hdf5_libs /usr/lib/libz.a"
  
  
-   ga_lib_prefix='-l'
-@@ -18552,13 +18556,14 @@
+ fi
+@@ -18236,13 +18240,13 @@
+   cat >>confdefs.h <<_ACEOF
+ #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+-  echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++  echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ludunits  $LIBS"
++LIBS="-ludunits2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -18662,9 +18666,10 @@
  
    ga_lib_prefix='$(supp_lib_dir)/lib'
    ga_lib_suffix='.a'
--  for ga_lib_name in mfhdf df jpeg z udunits ; do
-+  for ga_lib_name in mfhdf df jpeg udunits2 ; do
-       hdf_libs="$hdf_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
-   done
-+  hdf_libs="$hdf_libs /usr/lib/libz.a"
- 
- 
-   ga_lib_prefix='-l'
--  for ga_lib_name in mfhdf df jpeg z udunits ; do
-+  for ga_lib_name in mfhdf df jpeg z udunits2 ; do
-       hdf_dynlibs="$hdf_dynlibs ${ga_lib_prefix}${ga_lib_name}"
-   done
- 
-@@ -18639,13 +18644,13 @@
- 
-   ga_lib_prefix='$(supp_lib_dir)/lib'
-   ga_lib_suffix='.a'
--  for ga_lib_name in udunits netcdf ; do
-+  for ga_lib_name in udunits2 netcdf ; do
-       nc_libs="$nc_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
-   done
- 
- 
-   ga_lib_prefix='-l'
--  for ga_lib_name in udunits netcdf ; do
-+  for ga_lib_name in udunits2 netcdf ; do
-       nc_dynlibs="$nc_dynlibs ${ga_lib_prefix}${ga_lib_name}"
-   done
- 
-@@ -18658,13 +18663,14 @@
- 
-   ga_lib_prefix='$(supp_lib_dir)/lib'
-   ga_lib_suffix='.a'
--  for ga_lib_name in udunits netcdf hdf5_hl hdf5 curl z ; do
-+  for ga_lib_name in udunits2 netcdf hdf5_hl hdf5 curl ; do
+-  for ga_lib_name in udunits netcdf hdf5_hl hdf5 z sz curl ; do
++  for ga_lib_name in udunits netcdf hdf5_hl hdf5 sz curl ; do
        nc_libs="$nc_libs ${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}"
    done
 +  nc_libs="$nc_libs /usr/lib/libz.a"
  
  
-   ga_lib_prefix='-l'
--  for ga_lib_name in udunits netcdf hdf5_hl hdf5 curl z ; do
-+  for ga_lib_name in udunits2 netcdf hdf5_hl hdf5 curl z ; do
-       nc_dynlibs="$nc_dynlibs ${ga_lib_prefix}${ga_lib_name}"
-   done
+ fi
+@@ -18833,13 +18838,13 @@
  
-@@ -18796,9 +18802,10 @@
+ fi
+ if test $ac_cv_header_udunits_h = yes; then
+-    echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++    echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ludunits  $LIBS"
++LIBS="-ludunits2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -18899,7 +18904,7 @@
+ echo "${ECHO_T}$ac_cv_lib_udunits_utInit" >&6
+ if test $ac_cv_lib_udunits_utInit = yes; then
+     ga_use_udunits='yes'
+-        UDUNITS_LIBS='-ludunits'
++        UDUNITS_LIBS='-ludunits2'
+ 
+ fi
+ 
+@@ -19845,13 +19850,13 @@
+   cat >>confdefs.h <<_ACEOF
+ #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+-  echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++  echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ludunits  $LIBS"
++LIBS="-ludunits2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -20316,13 +20321,13 @@
+ 
+ fi
+ if test $ac_cv_header_udunits_h = yes; then
+-    echo "$as_me:$LINENO: checking for utInit in -ludunits" >&5
+-echo $ECHO_N "checking for utInit in -ludunits... $ECHO_C" >&6
++    echo "$as_me:$LINENO: checking for utInit in -ludunits2" >&5
++echo $ECHO_N "checking for utInit in -ludunits2... $ECHO_C" >&6
+ if test "${ac_cv_lib_udunits_utInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ludunits  $LIBS"
++LIBS="-ludunits2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -20382,7 +20387,7 @@
+ echo "${ECHO_T}$ac_cv_lib_udunits_utInit" >&6
+ if test $ac_cv_lib_udunits_utInit = yes; then
+     ga_use_udunits='yes'
+-        UDUNITS_LIBS='-ludunits'
++        UDUNITS_LIBS='-ludunits2'
+ 
+ fi
+ 
+@@ -21613,9 +21618,10 @@
  
    ga_lib_prefix='$(supp_lib_dir)/lib'
    ga_lib_suffix='.a'
@@ -181,120 +417,4 @@
 +  gadap_libs="$gadap_libs /usr/lib/libz.a"
  
  
-   ga_lib_prefix='-l'
-@@ -19079,7 +19086,7 @@
-       if test z"$gui_libs_Xext" != 'z'; then
-         gui_libs="$gui_libs -lXext"
-       fi
--      gui_libs="$gui_libs -lXaw -lXpm -lXmu -lXt"
-+      gui_libs="$gui_libs -lc -lXext -lXaw -lXpm -lXmu -lXt -lX11 -lthr -lgssapi -lldap -llber -lnghttp2 -lxml2 -ludunits2 -lexpat -lsz -lfreq -llzma -ljpeg -ltiff -ljbig"
- 
-     true #dummy command
-   else
-@@ -19751,8 +19758,8 @@
-          if test "z$ga_use_libsx" = "zfreq"; then
-             cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
--#include <libsx.h>
--#include <freq.h>
-+#include <X11/libsx/libsx.h>
-+#include <X11/libsx/freq.h>
- int
- main ()
- {
-@@ -19768,7 +19775,7 @@
-          else
-             cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
--#include <libsx.h>
-+#include <X11/libsx/libsx.h>
- int
- main ()
- {
-@@ -20793,7 +20800,7 @@
-   $as_echo_n "(cached) " >&6
- else
-   ac_check_lib_save_LIBS=$LIBS
--LIBS="-lpng  $LIBS"
-+LIBS="-lpng -lz $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -20908,13 +20915,13 @@
-   ga_use_udunits='no'
-   ac_fn_c_check_header_mongrel "$LINENO" "udunits.h" "ac_cv_header_udunits_h" "$ac_includes_default"
- if test "x$ac_cv_header_udunits_h" = xyes; then :
--    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits" >&5
--$as_echo_n "checking for utInit in -ludunits... " >&6; }
-+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits2" >&5
-+$as_echo_n "checking for utInit in -ludunits2... " >&6; }
- if ${ac_cv_lib_udunits_utInit+:} false; then :
-   $as_echo_n "(cached) " >&6
- else
-   ac_check_lib_save_LIBS=$LIBS
--LIBS="-ludunits  $LIBS"
-+LIBS="-ludunits2  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -20946,7 +20953,7 @@
- $as_echo "$ac_cv_lib_udunits_utInit" >&6; }
- if test "x$ac_cv_lib_udunits_utInit" = xyes; then :
-     ga_use_udunits='yes'
--        UDUNITS_LIBS='-ludunits'
-+        UDUNITS_LIBS='-ludunits2'
- 
  fi
- 
-@@ -22478,13 +22485,13 @@
-   ga_use_udunits='no'
-   ac_fn_c_check_header_mongrel "$LINENO" "udunits.h" "ac_cv_header_udunits_h" "$ac_includes_default"
- if test "x$ac_cv_header_udunits_h" = xyes; then :
--    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits" >&5
--$as_echo_n "checking for utInit in -ludunits... " >&6; }
-+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits2" >&5
-+$as_echo_n "checking for utInit in -ludunits2... " >&6; }
- if ${ac_cv_lib_udunits_utInit+:} false; then :
-   $as_echo_n "(cached) " >&6
- else
-   ac_check_lib_save_LIBS=$LIBS
--LIBS="-ludunits  $LIBS"
-+LIBS="-ludunits2  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -22516,7 +22523,7 @@
- $as_echo "$ac_cv_lib_udunits_utInit" >&6; }
- if test "x$ac_cv_lib_udunits_utInit" = xyes; then :
-     ga_use_udunits='yes'
--        UDUNITS_LIBS='-ludunits'
-+        UDUNITS_LIBS='-ludunits2'
- 
- fi
- 
-@@ -23021,13 +23028,13 @@
-   ga_use_udunits='no'
-   ac_fn_c_check_header_mongrel "$LINENO" "udunits.h" "ac_cv_header_udunits_h" "$ac_includes_default"
- if test "x$ac_cv_header_udunits_h" = xyes; then :
--    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits" >&5
--$as_echo_n "checking for utInit in -ludunits... " >&6; }
-+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for utInit in -ludunits2" >&5
-+$as_echo_n "checking for utInit in -ludunits2... " >&6; }
- if ${ac_cv_lib_udunits_utInit+:} false; then :
-   $as_echo_n "(cached) " >&6
- else
-   ac_check_lib_save_LIBS=$LIBS
--LIBS="-ludunits  $LIBS"
-+LIBS="-ludunits2  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -23059,7 +23066,7 @@
- $as_echo "$ac_cv_lib_udunits_utInit" >&6; }
- if test "x$ac_cv_lib_udunits_utInit" = xyes; then :
-     ga_use_udunits='yes'
--        UDUNITS_LIBS='-ludunits'
-+        UDUNITS_LIBS='-ludunits2'
- 
- fi
- 

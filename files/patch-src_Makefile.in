@@ -1,0 +1,11 @@
+--- src/Makefile.in.orig	2011-10-24 14:45:27.000000000 -0500
++++ src/Makefile.in	2018-01-04 16:24:08.272104000 -0600
+@@ -201,7 +201,7 @@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -ljbig -lcurses -llzma /usr/local/lib/libfreq.a  -lthr -lcurl -lnghttp2 -lssl -lcrypto -lldap -llber -lgssapi -lxml2 -lexpat
+ LN_S = @LN_S@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@

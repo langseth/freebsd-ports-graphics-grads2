@@ -1,5 +1,5 @@
-# GrADS 2.2.x FreeBSD Port  
-This is a port for GrADS 2.2.x
+# GrADS 2.0.x FreeBSD Port  
+This is a port for GrADS 2.0.x
 
 ## Getting Started
 This is by no means complete as of this writing it is compiling without errors but it dependencies are not automatic.
