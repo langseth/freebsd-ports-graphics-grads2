@@ -24,6 +24,7 @@ fetch g2clib build and install. This should be converted to a port
 fetch http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/g2clib-1.6.0.tar
 tar xf g2clib-1.6.0.tar
 cd g2clib-1.6.0
+remove '-D__64BIT__' from the CFLAGS listed in 'makefile'
 gmake
 
 cp libg2c_v1.6.0.a /usr/local/lib/
